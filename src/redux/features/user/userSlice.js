@@ -3,7 +3,6 @@
  const initialState = {
     name: 'Mir Hussain',
     email : 'mir@gmail.com',
-    userTasks : []
  }
 
  const userSlice = createSlice({
