@@ -17,7 +17,7 @@ export const createUser = createAsyncThunk(
     await updateProfile(auth.currentUser, {
       displayName: name,
     })
-    console.log(data);
+    // console.log(data);
     return {
       email: data.user.email,
       name: data.user.displayName,
@@ -29,7 +29,15 @@ export const createUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "userSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    setUser: (state, {payload}) => {
+      state.email = payload.email;
+      state.name = payload.name;
+    },
+    toggleLoading: (state, {payload}) => {
+      state.isLoading = payload;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(createUser.pending, (state) => {
       state.isLoading = true;
@@ -56,3 +64,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+export const { setUser, toggleLoading } = userSlice.actions;
