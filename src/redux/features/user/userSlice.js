@@ -36,6 +36,10 @@ const userSlice = createSlice({
     },
     toggleLoading: (state, {payload}) => {
       state.isLoading = payload;
+    },
+    logout: (state) => {
+      state.email = "";
+      state.name = "";
     }
   },
   extraReducers: (builder) => {
@@ -56,12 +60,12 @@ const userSlice = createSlice({
     .addCase(createUser.rejected, (state, action) => {
       state.isLoading = false;
       state.isErrror = true;
-      state.error = "";
+      state.error = action.error.message;
       state.email = "";
-      state.name = action.error.message;
+      state.name = "";
     });
   },
 });
 
 export default userSlice.reducer;
-export const { setUser, toggleLoading } = userSlice.actions;
+export const { setUser, toggleLoading, logout } = userSlice.actions;
