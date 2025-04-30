@@ -5,6 +5,7 @@ import Chat from "../pages/Chat";
 import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
 import PrivateRoute from "../components/layouts/PrivateRoute";
+import Archive from "../pages/Archive";
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const routes = createBrowserRouter([
       {
         path: "/chat",
         element: <Chat />,
+      },
+      {
+        path: '/archive',
+        element: <Archive />,
       },
       {
         path: "/settings",
